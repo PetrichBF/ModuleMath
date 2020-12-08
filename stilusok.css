@@ -1,0 +1,21 @@
+body {
+    background-color: antiquewhite;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+ol li, ul li {
+    font-style: italic;
+}
+dt {
+    font-weight: bold;
+    margin: 1em;
+}
+
+    table, th, td {
+    border-collapse: collapse;
+    border: black solid 1px;
+    text-align: center;
+    margin: 0 auto;
+    }
+    table {
+        border: 2px;
+    }

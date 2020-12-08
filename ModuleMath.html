@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math</title>
+    <link rel="stylesheet" href="stilusok.css">
+</head>
+
+<body>
+    <h1 id="teteje">Python modulok bemutatása - „math” (matematikai) modul</h1>
+    <ol>
+        <li>A „math” modul leírása</li>
+        <p>A „math” elnevezésű modul a matematikai függvényekkel foglalkozik. Amennyiben komplex számokkal szeretnénk
+            műveleteket végezni, akkor egy másik modult - a cmath modult – kell használnunk, amely függvényei azonos
+            elnevezésűek. A kivételektől eltekintve a modul függvényeinek visszatérési értéke lebegő számos (float).</p>
+        <p>A modul függvényei az alábbi hét csoportba sorolható be:</p>
+        <ol>
+            <li><a href="#index11">Számelméleti és ábrázolási függvények</a></li>
+            <li><a href="#index12">Hatvány- és logaritmikus függvények</a></li>
+            <li><a href="#index13">Trigonometrikus (szög-) függvények</a></li>
+            <li><a href="#index14">Szögátalakítás</a></li>
+            <li><a href="#index15">Hiperbolikus funkciók</a></li>
+            <li><a href="#index16">Speciális funkciók</a></li>
+            <li><a href="#index17">Állandók (konstansok)</a></li>
+        </ol>
+        <p>Egyes függvények bemutatásra kerülnek a „<a href="Python math modul bemutatása v2.1.py" target="blank">Python
+                math modul bemutatása v2.1.py</a>” programban, a példáknál kapott
+            értékek itt az ismertetéseknél is megtalálhatók táblázatos formában.</p>
+        <ol>
+            <li id="index11">Számelméleti és ábrázolási függvények</li>
+            <dt id="math.ceil">math.ceil( x )</dt>
+            <dd>
+                <p>
+                    Az x argumentumban megadott számhoz viszonyítva a legkisebb egész számot adja vissza, amely nagyobb
+                    vagy egyenlő, mint x. Az eredmény típusa integral.
+                    (Negatív szám esetén veszi az egész részét, pozitív szám esetén – ha az nem egész – felfelé kerekíti
+                    a következő egészre, ha pedig pozitív egész szám volt, változatlanul hagyja.)
+                </p>
+
+                <table>
+                    <tr>
+                        <th>x</th>
+                        <th>math.ceil( x )</th>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>-8</td>
+                        <td>-8</td>
+                    </tr>
+                    <tr>
+                        <td>13.58</td>
+                        <td>14</td>
+                    </tr>
+                    <tr>
+                        <td>-13.58</td>
+                        <td>-13</td>
+                    </tr>
+                </table>
+                <p>Hasonlítsuk össze a <a href="#math.floor">math.floor( x )</a> függvénnyel!</p>
+            </dd>
+            <dt>math.comb( n , k )</dt>
+            <dd>
+                <p>
+                    Megadja, hogy n elem közül hányféle módon lehet kiválasztani k elemet, ha nincs ismétlés és a
+                    sorrend nem számít (más néven ez a binomiális együttható). TypeError hibaüzenettel tér vissza, ha
+                    valamelyik
+                    argumentum nem egész szám; ValueError hibaüzenettel, ha bármelyik argumentum negatív értékű. Az
+                    eredmény típusa
+                    integral.
+                </p>
+                <table>
+                    <tr>
+                        <th>n, k </th>
+                        <th>math.comb( n, k )</th>
+                    </tr>
+                    <tr>
+                        <td>90, 5</td>
+                        <td>43949268</td>
+                    </tr>
+                    <tr>
+                        <td>45, 6</td>
+                        <td>8145060</td>
+                    </tr>
+                    <tr>
+                        <td>35, 7 </td>
+                        <td>6724520</td>
+                    </tr>
+                </table>
+
+                <p>A függvény a 3.8. verziótól használható.</p>
+
+            </dd>
+            <dt>math.perm( n , k = Nincs )</dt>
+            <dd>
+                <p> Megadja, hogy hányféleképpen lehet választani k elemet az n tétel közül, ha nincs ismétlés.</p>
+                <p>
+                    TypeError hibaüzenettel tér vissza, ha valamelyik argumentum nem egész szám; ValueError
+                    hibaüzenettel, ha bármelyik argumentum negatív értékű. Az eredmény típusa integral.
+                </p>
+
+                <table>
+                    <tr>
+                        <th> n, k</th>
+                        <th>math.perm( n, k )</th>
+                    </tr>
+                    <tr>
+                        <td>5, 2</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>10, 3</td>
+                        <td>720</td>
+                    </tr>
+                    <tr>
+                        <td>5, 1</td>
+                        <td>5</td>
+                    </tr>
+                </table>
+
+                <p>A függvény a 3.8. verziótól használható.</p>
+            </dd>
+
+            <dt>math.copysign( x , y )</dt>
+            <dd>
+                <p>
+                    Visszatérési értéke egy float típusú szám, amelynek nagysága (abszolút értéke) x, de előjele az y
+                    értékének megfelelő.
+                </p>
+                <p>(Ha a platform támogatja a -0 értéket, akkor a copysign(1.0, -0.0) -1.0 értéket ad vissza.)</p>
+
+                <table>
+                    <tr>
+                        <th> x, y</th>
+                        <th>math.copysign( x, y )</th>
+                    </tr>
+                    <tr>
+                        <td>15, 0.0</td>
+                        <td>15.0</td>
+                    </tr>
+                    <tr>
+                        <td> 15, -0.0 </td>
+                        <td> -15.0</td>
+                    </tr>
+                    <tr>
+                        <td>13.62, 3.0</td>
+                        <td>13.62</td>
+                    </tr>
+                    <tr>
+                        <td>13.62, -1.0</td>
+                        <td>-13.62</td>
+                    </tr>
+                </table>
+
+            </dd>
+            <dt>math.fabs( x )</dt>
+            <dd>
+                <p> Az x argumentum abszolút értékét adja vissza.</p>
+
+                <p>Az abszolútérték fogalma <a href="#f5">(5)</a>:</p>
+                <p>
+                    A számegyenesen egy számnak a 0-tól mért távolságát a szám abszolút értékének nevezzük. A távolság
+                    nem lehet negatív szám, tehát az abszolút érték sem. A 0 abszolút értéke 0.
+
+                </p>
+                <p>Az abszolút érték matematikai jele: | |.</p>
+                <ul>
+                    <li>Pozitív szám abszolút értéke maga a szám.</li>
+                    <li>Negatív szám abszolút értéke a szám ellentettje.</li>
+
+                </ul>
+
+                <table>
+                    <tr>
+                        <th>x</th>
+                        <th>math.fabs( x )</th>
+                    </tr>
+                    <tr>
+                        <td> 0</td>
+                        <td>0.0</td>
+                    </tr>
+                    <tr>
+                        <td>58</td>
+                        <td>58.0</td>
+                    </tr>
+                    <tr>
+                        <td>-13 </td>
+                        <td>13.0</td>
+                    </tr>
+                    <tr>
+                        <td>-13.5878</td>
+                        <td>13.5878</td>
+                    </tr>
+                </table>
+
+            </dd>
+
+            <dt>math.factorial( x )</dt>
+            <dd>
+                <p>A válasz az x argumentum faktoriálisa (x!), típusa integral.</p>
+                <p>A válasz ValueError hibaüzenet, ha x típusa nem integral, vagy értéke negatív.</p>
+
+                <p>A faktoriális fogalma <a href="#f6">(6)</a>:</p>
+                <p>
+                    A matematikában egy n nemnegatív egész szám faktoriálisának az n-nél kisebb vagy egyenlő pozitív
+                    egész
+                    számok szorzatát nevezzük. Jelölése: n!, amit „n faktoriális”-nak vagy „n faktor”-nak olvasunk ki.
+                    Az n!
+                    jelölést Christian Kramp vezette be 1808-ban. Negatív, tört vagy irracionális számok faktoriálisa
+                    nem
+                    értelmezett; helyette a gamma-függvényt használják.
+
+                </p>
+                <p>A faktoriálisok sorozata n = 0, 1, 2, … így kezdődik:</p>
+
+                <p>1, 1, 2, 6, 24, 120, 720, 5040, …</p>
+
+                <table>
+                    <tr>
+                        <th>x</th>
+                        <th>math.factorial( x )</th>
+                    </tr>
+                    <tr>
+                        <td>0 </td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>5 </td>
+                        <td>120</td>
+                    </tr>
+                </table>
+
+            </dd>
+
+            <dt id="math.floor">math.floor( x )</dt>
+            <dd>
+                <p>
+                    Az x argumentumban megadott számhoz viszonyítva a legnagyobb egész számot adja vissza, amely kisebb
+                    vagy
+                    egyenlő, mint x. Az eredmény típusa integral.
+                    (Pozitív szám esetén veszi az egész részét, negatív szám esetén – ha az nem egész – lefelé kerekíti
+                    a
+                    következő egészre, ha pedig negatív egész szám volt, változatlanul hagyja.)
+                </p>
+
+                <table>
+                    <tr>
+                        <th>x </th>
+                        <th>math.floor( x )</th>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>-8</td>
+                        <td>-8</td>
+                    </tr>
+                    <tr>
+                        <td> 13.58</td>
+                        <td>13</td>
+                    </tr>
+                    <tr>
+                        <td> -13.58</td>
+                        <td>-14</td>
+                    </tr>
+                </table>
+
+
+                <p>Hasonlítsuk össze a <a href="#math.ceil">math.ceil( x)</a> függvénnyel!</p>
+            </dd>
+
+            <dt>math.gcd( egész számok vesszővel elválasztva )</dt>
+            <dd>
+                <p>
+                    Visszaadja a megadott egész argumentumok legnagyobb közös osztóját. Ha bármelyik argumentum nem
+                    nulla,
+                    akkor
+                    a visszaadott érték a legnagyobb pozitív egész szám, amely az összes argumentum osztója. Ha az
+                    összes
+                    argumentum nulla, akkor a visszaadott érték az 0. gcd() argumentumok nélkül 0 értékkel tér vissza.
+
+                </p>
+                <p>
+                    (A 3.9. verzió már több egész szám közös osztóját is meg tudja határozni, korábbi verziók esetében
+                    kötelezően két érték adható csak meg.)
+                </p>
+
+                <table>
+                    <tr>
+                        <th>egész számok</th>
+                        <th>math.gcd( egész számok )</th>
+                    </tr>
+                    <tr>
+                        <td>120, 25</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>24, 60</td>
+                        <td>12</td>
+                    </tr>
+                </table>
+
+            </dd>
+
+            <dt>math.lcm( * egész számok )</dt>
+            <dd>
+                <p>
+                    Visszaadja a megadott egész argumentum legkisebb közös többszörösét. Ha az összes argumentum nem
+                    nulla, akkor a visszaadott érték a legkisebb pozitív egész szám, amely az összes argumentum
+                    többszöröse. Ha
+                    bármelyik argumentum nulla, akkor a visszaadott érték az 0. A math.lcm() argumentumok nélkül 1
+                    értéket ad vissza.
+                </p>
+                <p>(A 3.9. verzióban jelent meg.)</p>
+            </dd>
+
+            <dt>math.isclose( a , b , * , rel_tol = 1e-09 , abs_tol = 0.0 )</dt>
+            <dd>
+                <p>
+                    Visszatérési érétke True, amennyiben az a és b értékek közel vannak egymáshoz, különben False.
+                    A „közel vannak egymáshoz” a megadott abszolút és relatív tűréshatárok alapján határozható meg.
+                    Az alapértelmezett tűrés az 1e-09, amely biztosítja, hogy a két érték kb. 9 tizedesjegyen belül
+                    megegyezzen.
+                </p>
+                <p>
+                    A rel_tol (relatív tolerancia) az a legnagyobb megengedett különbség a és b között (például az 5%-os
+                    tolerancia beállításához rel_tol=0.05 kell megadni).
+                </p>
+            </dd>
+
+            <dt>math.isfinite( x )</dt>
+            <dd>Visszatértési értkéke True, ha az x argumentum értéke nem végtelen vagy nem NaN különben False.</dd>
+
+            <dt>math.isinf( x )</dt>
+            <dd>Értéke True, ha az x argumentum értéke (pozitív vagy negatív) végtelen, különben False.</dd>
+
+            <dt>math.isnan( x )</dt>
+            <dd>Értéke True, ha az x argumentum NaN (nem szám), különben False.</dd>
+
+            <dt id="math.isqrt">math.isqrt( N )</dt>
+            <dd>
+                <p>Megadja az n nemnegatív egész szám négyzetgyökének egész részét.</p>
+
+
+                <table>
+                    <tr>
+                        <th>x </th>
+                        <th>math.isqrt( x )</th>
+                    </tr>
+                    <tr>
+                        <td>68</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td>125</td>
+                        <td>11</td>
+                    </tr>
+                </table>
+
+                <p>Hasonlítsuk össze a 2. alpontban található <a href="#math.sqrt">math.sqrt( x )</a> függvénnyel.</p>
+
+                <p>A függvény a 3.8. verziótól használható.</p>
+            </dd>
+            <p>További függvények ebből a csoportból, melyek nem kerültek bemutatásra:</p>
+            <dt>math.fmod( x , y )</dt>
+            <dt>math.frexp( x )</dt>
+            <dt>math.fsum( iterálható )</dt>
+            <dt>math.ldexp( x , i )</dt>
+            <dt>math.modf( x )</dt>
+            <dt>math.nextafter( x , y )</dt>
+            <dt>math.prod( iterálható , * , kezdet = 1 )</dt>
+            <dt>math.remainder( x , y )</dt>
+            <dt>math.trunc( x )</dt>
+            <dt>math.ulp( x )</dt>
+
+            <li id="index12">Hatvány- és logaritmikus függvények </li>
+            <dt>math.log2( x )</dt>
+            <dd>
+                <p>Megadja az x argumentum 2-es alapú logaritmusát.</p>
+
+                <table>
+                    <tr>
+                        <th>x </th>
+                        <th>math.log2( x )</th>
+                    </tr>
+                    <tr>
+                        <td>64</td>
+                        <td>6.0</td>
+                    </tr>
+                    <tr>
+                        <td> 128</td>
+                        <td>7.0</td>
+                    </tr>
+                </table>
+
+            </dd>
+            <dt>math.log10( x )</dt>
+            <dd>
+                <p>Megadja az x argumentum 10-es alapú logaritmusát.</p>
+
+                <table>
+                    <tr>
+                        <th>x </th>
+                        <th>math.log10( x )</th>
+                    </tr>
+                    <tr>
+                        <td>100</td>
+                        <td>2.0</td>
+                    </tr>
+                    <tr>
+                        <td>10000</td>
+                        <td> 4.0</td>
+                    </tr>
+                </table>
+            </dd>
+            <dt id="math.sqrt">math.sqrt( x )</dt>
+            <dd>
+                <p>Megadja az x argumentum négyzetgyökét.</p>
+
+                <table>
+                    <tr>
+                        <th>x</th>
+                        <th> math.sqrt( x )</th>
+                    </tr>
+                    <tr>
+                        <td> 68</td>
+                        <td>8.246211251235321</td>
+                    </tr>
+                    <tr>
+                        <td>125</td>
+                        <td>11.18033988749894</td>
+                    </tr>
+                </table>
+            </dd>
+            <p>Hasonlítsuk össze az 1. alpontban található <a href="#math.isqrt">math.isqrt( x )</a> függvénnyel.</p>
+
+            <p>További függvények ebből a csoportból, melyek nem kerültek bemutatásra:</p>
+            <dt>math.pow( x , y )</dt>
+            <dt>math.exp( x )</dt>
+            <dt>math.expm1( x )</dt>
+            <dt>math.log( x [ , alap ] )</dt>
+            <dt>math.log1p( x )</dt>
+
+            <li id="index13">Trigonometrikus (szög-) függvények <a href="#f7">(7)</a>:</li>
+
+            <p>
+                A trigonometrikus függvények vagy szögfüggvények eredetileg egy derékszögű háromszög egy szöge és két
+                oldalának hányadosa közötti összefüggést írják le (innen nyerték magyar és latin nevüket is). A
+                szögfüggvények fontosak többek között a geometriai számításoknál, különféle mozgások (harmonikus
+                rezgőmozgás, körmozgás) és a periodikus jelenségek leírásánál, és a műszaki élet számtalan területén.
+            </p>
+
+            <p>
+                A szögfüggvények a derékszögű háromszög két oldalának hányadosa és a szög összefüggésén kívül az
+                egységsugarú körben tekintett forgásszög-végpontok metszeteivel (vetületeivel, koordinátáival) is
+                definiálhatók. Ez utóbbi definíció már 90°, azaz π/2-nél nagyobb, sőt, negatív (mindent összevéve,
+                tetszőleges valós) argumentumokra is működik.
+
+            </p>
+            <p>
+                A math.sin, math.cos és math.tan függvények x argumentumának (szög) értékét radiánban kell megadni.
+                Amennyiben az érték fokban áll rendelkezésünkre, használjuk a 4. alpontban leírt <a
+                    href="#index14">„szögátalakítás”</a>
+                függvényeket.
+            </p>
+            <dt>math.sin( x )</dt>
+            <dd>Visszaadja az x radiánban megadott szög szinuszát.</dd>
+            <dt>math.cos( x )</dt>
+            <dd>Visszaadja az x radiánban megadott szög koszinuszát.</dd>
+            <dt>math.tan( x )</dt>
+            <dd>Visszaadja az x radiánban megadott érték tangensét.</dd>
+
+            <p>
+                A trigonometriai függvények periodikusak, ezért nem injektívek, tehát szigorú értelemben véve nincs
+                inverz függvényük. Az inverz függvény definiálásához ezért le kell szűkíteni az értelmezési
+                tartományukat olyan
+                módon, hogy a trigonometriai függvény bijektív legyen.
+            </p>
+
+            <dt>math.asin( x )</dt>
+            <dd>Visszaadja x szinuszértékhez tartozó szög nagyságát radiánban. Az eredmény értékkészlete mínusz π / 2 és
+                π / 2 között van.</dd>
+            <dt>math.acos( x )</dt>
+            <p>
+                Visszaadja x koszinuszértékhez tartozó szög nagyságát radiánban. Az eredmény értékkészlete 0 és π között
+                van.
+            </p>
+
+            <table>
+                <tr>
+                    <th></th>
+                    <th>-math.pi</th>
+                    <th>-math.pi/2</th>
+                    <th>0</th>
+                    <th>math.pi/2</th>
+                    <th>math.pi</th>
+                </tr>
+                <tr>
+                    <td><b>math.sin</b> </td>
+                    <td>-0.0</td>
+                    <td> -1.0</td>
+                    <td> 0.0</td>
+                    <td>1.0</td>
+                    <td>0.0</td>
+                </tr>
+                <tr>
+                    <td><b>math.cos</b></td>
+                    <td>-1.0</td>
+                    <td>0.0</td>
+                    <td>1.0</td>
+                    <td>0.0</td>
+                    <td>-1.0</td>
+                </tr>
+            </table>
+
+            <dt>math.atan( x )</dt>
+            <dd>
+                Visszaadja x tangensértékhez tartozó szög nagyságát radiánban. Az eredmény értékkészlete mínusz π / 2 és
+                π / 2 között van.
+            </dd>
+            <dt>math.atan2( y , x )</dt>
+            <dd>
+                Az eredmény radiánban van, értékkészlete mínusz π és π közötti. Meghatározza az origótól a pontig tartó
+                síkban levő vektor és az x tengely pozitív része között bezárt szöget.
+            </dd>
+            <dt>math.dist( p , q )</dt>
+            <dd>
+                <p>A két (p és q) pont közötti euklideszi távolságot adja meg.</p>
+                <p>A függvény a 3.8. verziótól használható.</p>
+            </dd>
+            <dt>math.hypot( koordináták )</dt>
+            <dd>
+                Az euklideszi norma szerinti értéket adja meg, ami azon vektor hossza, amelynek kezdőpontja az origó,
+                vége pedig a koordináták által megadott pont.
+            </dd>
+
+            <li id="index14">Szögátalakítás:</li>
+            A függvények segítségével radián és fok között tudunk váltani.
+            <dt>math.degrees( x )</dt>
+            <dd>
+                <p>Az x argumentumban radiánban megadott szöget fokban adja meg.</p>
+                <table>
+                    <tr>
+                        <th>x</th>
+                        <th>math.degrees( x )</th>
+                    </tr>
+
+                    <tr>
+                        <td>0</td>
+                        <td>0.0</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>57.29577951308232</td>
+                    </tr>
+                    <tr>
+                        <td>3.14</td>
+                        <td>179.9087476710785</td>
+                    </tr>
+                    <tr>
+                        <td>math.pi </td>
+                        <td>180.0</td>
+                    </tr>
+                    <tr>
+                        <td>math.tau</td>
+                        <td>360.0</td>
+                    </tr>
+                </table>
+
+            </dd>
+            A <a href="#math.pi">math.pi</a> és <a href="#math.tau">math.tau</a> konstansok szintén a „math” modul
+            elemei, ismertetésük a <a href="#index17">„7. alpont Állandók (konstansok)”</a>
+            pontban olvasható.
+            <dt>math.radians( x )</dt>
+            <dd>
+                <p> Az x argumentumban fokban megadott szöget radiánban adja meg.</p>
+                <table>
+                    <tr>
+                        <th> x </th>
+                        <th>math.radians( x )</th>
+                    </tr>
+
+                    <tr>
+                        <td>0</td>
+                        <td>0.0</td>
+                    </tr>
+                    <tr>
+                        <td>90</td>
+                        <td>1.5707963267948966</td>
+                    </tr>
+                    <tr>
+                        <td>180</td>
+                        <td>3.141592653589793</td>
+                    </tr>
+                    <tr>
+                        <td>270</td>
+                        <td>4.71238898038469</td>
+                    </tr>
+                    <tr>
+                        <td>360</td>
+                        <td>6.283185307179586</td>
+                    </tr>
+                    <tr>
+                        <td>-270</td>
+                        <td>-4.71238898038469</td>
+                    </tr>
+                    <tr>
+                        <td>-180</td>
+                        <td>-3.141592653589793</td>
+                    </tr>
+                    <tr>
+                        <td>-90</td>
+                        <td>-1.5707963267948966</td>
+                    </tr>
+
+                </table>
+
+            </dd>
+
+            <li id="index15">Hiperbolikus funkciók <a href="#f8">(8)</a>:</li>
+
+            <p>A hiperbolikus függvények a matematikában a szögfüggvényekhez hasonló függvények.</p>
+
+            <p>
+                A két alapvető hiperbolikus függvény a hiperbolikus szinusz (jelölése sh vagy sinh) és a hiperbolikus
+                koszinusz (jelölése ch vagy cosh), melyekből levezethető a hiperbolikus tangens (jelölése th vagy tanh)
+                stb.
+                függvény a szögfüggvényekhez hasonlóan. Ezeknek a függvényeknek az inverzei az area hiperbolikus
+                függvények.
+            </p>
+
+            <p>
+                Ahogy a (cos t, sin t) pontok egy kört határoznak meg, úgy a (ch t, sh t) pontok egy hiperbola jobb
+                oldali
+                félgörbéjét írják le. A hiperbolikus függvények azért is fontosak, mert több lineáris
+                differenciálegyenlet
+                megoldását fel lehet írni a használatukkal. Ilyen például derékszögű koordináta-rendszerben a súlya
+                alatt
+                lelógó kábel egyenlete. Alkalmazhatóak ezen kívül a Laplace-egyenlet megoldásánál, amely a fizika több
+                területén – az elektromágnesség elméletében, hőátadásban, folyadékok dinamikájában és a speciális
+                relativitáselméletben – is fontos.
+            </p>
+
+            <dt>math.acosh( x )</dt>
+            <dd>Az x argumentumban meghatározott érték inverz hiperbolikus koszinuszát adja meg.</dd>
+            <dt>math.asinh( x )</dt>
+            <dd>Az x argumentumban meghatározott érték inverz hiperbolikus szinuszát adja meg.</dd>
+            <dt>math.atanh( x )</dt>
+            <dd>Az x argumentumban meghatározott érték inverz hiperbolikus érintőjét adja meg.</dd>
+            <dt>math.cosh( x )</dt>
+            <dd>Az x argumentumban meghatározott érték hiperbolikus koszinuszát adja meg.</dd>
+            <dt>math.sinh( x )</dt>
+            <dd>Az x argumentumban meghatározott érték hiperbolikus szinuszát adja meg.</dd>
+            <dt>math.tanh( x )</dt>
+            <dd>Az x argumentumban meghatározott érték hiperbolikus érintőjét adja meg.</dd>
+
+            <p>A fenti függvények a Python math modul bemutatására készített programban nem kerültek ismertetésre.</p>
+
+            <li id="index16">Speciális funkciók</li>
+            <dt>math.erf( x )</dt>
+            <dt>math.erfc( x )</dt>
+            <dt>math.gamma( x )</dt>
+            <dt>math.lgamma( x )</dt>
+
+            <p>A fenti függvények a Python math modul bemutatására készített programban nem kerültek ismertetésre.</p>
+
+            <li id="index17">Állandók (konstansok)</li>
+            <dt>math.pi</dt>
+            <dd>A π értékét adja meg az elérhető pontossággal (3,141592…).</dd>
+            <dt>math.e</dt>
+            <dd>Az e értékét adja vissza az elérhető pontossággal (2,718281…)</dd>
+            <dt>math.tau</dt>
+            <dd>
+                A tau (τ) értéke tulajdonképpen π érékének kétszerese, azaz a kör kerületének és a sugarának aránya. A
+                függvény által visszaadott érték 6,283185… az elérhető pontossággal.
+            </dd>
+            <dt>math.inf</dt>
+            <dd>
+                Lebegőpontos pozitív végtelen (∞) ami egyenértékű a float('inf') értékével, negatív végtelen (-∞) esetén
+                használjuk -math.inf értéket.
+            </dd>
+            <dt>math.nan</dt>
+            <dd>Lebegőpontos „nem szám” (Not a Number, NaN) érték. A kimenet egyenértékű a következővel: float('nan').
+            </dd>
+
+            <table>
+                <tr>
+                    <th>állandó</th>
+                    <th>érték</th>
+                </tr>
+                <tr>
+                    <td id="math.pi">math.pi</td>
+                    <td>3.141592653589793</td>
+                </tr>
+                <tr>
+                    <td>math.e</td>
+                    <td>2.718281828459045</td>
+                </tr>
+                <tr>
+                    <td id="math.tau">math.tau</td>
+                    <td>6.283185307179586</td>
+                </tr>
+                <tr>
+                    <td>math.inf</td>
+                    <td>inf</td>
+                </tr>
+                <tr>
+                    <td> math.nan </td>
+                    <td>nan</td>
+                </tr>
+            </table>
+
+
+
+        </ol>
+        <li>Felhasznált források:</li>
+        <ul>
+            <li id="f1"><a href="http://nyelvek.inf.elte.hu/leirasok/Python/index.php?chapter=14" target="blank">(1)
+                    nyelvek.inf.elte.hu/leirasok/Python/index.php?chapter=14</a></li>
+            <li id="f2"><a href="http://slpython.blogspot.com/2016/09/10-modulok-csomagok.html" target="blank">(2)
+                    slpython.blogspot.com/2016/09/10-modulok-csomagok.html</a></li>
+            <li id="f3"><a href="http://docs.python.org/3/library/index.html" target="blank">(3)
+                    docs.python.org/3/library/index.html</a></li>
+            <li id="f4"><a href="http://docs.python.org/3/library/math.html" target="blank">(4)
+                    docs.python.org/3/library/math.html</a></li>
+            <li id="f5"><a
+                    href="http://tudasbazis.sulinet.hu/hu/matematika/matematika/matematika-5-osztaly/az-abszolut-ertek/az-abszolutertek-fogalma"
+                    target="blank">(5) tudasbazis.sulinet.hu/hu/matematika/matematika/matematika-5-osztaly/az-abszolut-ertek/az-abszolutertek-fogalma</a>
+            </li>
+            <li id="f6"><a href="http://hu.wikipedia.org/wiki/Faktori%C3%A1lis" target="blank">(6)
+                    hu.wikipedia.org/wiki/Faktoriális</a></li>
+            <li id="f7"><a href="http://hu.wikipedia.org/wiki/Sz%C3%B6gf%C3%BCggv%C3%A9nyek" target="blank">(7)
+                    hu.wikipedia.org/wiki/Szögfüggvények</a></li>
+            <li id="f8"><a href="http://hu.wikipedia.org/wiki/Hiperbolikus_f%C3%BCggv%C3%A9nyek" target="blank">(8)
+                    hu.wikipedia.org/wiki/Hiperbolikus_függvények</a></li>
+        </ul>
+
+    </ol>
+    <a href="#teteje">Ugrás a lap tetejére</a>
+</body>
+
+</html>
